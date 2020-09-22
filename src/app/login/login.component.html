@@ -1,0 +1,107 @@
+
+    <!--//** Banner**//-->
+    <section id="home">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Introduction -->
+
+                <div class="col-md-8 caption justify-content-center">
+                        <img class="logoimg" src="../../assets/img/Logo-2.png">
+                      
+                        <p class="f-para ">EZI Codes is a software development and consulting firm that designs, develops,
+                      develops, deploys custom software Applications and
+                          provides innovative intelligent solutions for enterprises that are interested in qualitative changes through technology ..
+                      </p>
+                </div>
+
+                <!-- Sign Up -->
+
+                <div class="col-md-4 ">
+                    <div class="login100-form-avatar">
+                        <i class="fa fa-user fa-5x"></i>
+                   </div>
+   
+                
+                    <form class="login100-form validate-form">
+                    
+                        <span class="login100-form-title p-t-20 p-b-45">
+                            Sing In 
+                        </span>
+    
+                        <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+                            <div class="form-group">
+                                <div class="col-md-10 offset-md-1">
+    
+                            <input class="input100" type="text" name="username" placeholder="Username"
+                            autocomplete="off"  
+                            name="username"
+                            [(ngModel)]="user.username"
+                            #username="ngModel"     >
+                            
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+    
+    
+                        </div>
+    
+                        <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+                            <div class="form-group">
+                                <div class="col-md-10 offset-md-1">
+                                    <input class="input100" type="password" name="pass" placeholder="Password"
+                                name="password"
+                                [(ngModel)]="user.password"
+                                #Password="ngModel">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                                </div>
+                            </div>
+                           
+    
+                        <div class="col-md-10 offset-md-1">
+                            <div class="container-login100-form-btn p-t-10">
+                                <button class="login100-form-btn"  (click)="login()">
+                                    Login
+                                </button>
+                            </div>
+        
+                        </div>
+                    
+    
+                    
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer" >
+
+        <div class="container">
+  
+          <div class="row align-items-center justify-content-md-between">
+            <div class="col-lg-12 text-lg-center">
+       
+      
+              <div class="copyright"  style="color: #00668f;" >
+                حقوق النشر  &copy; EZI CODES جميع الحقوق محفوظة | نفذ هذا الموقع بواسطة 
+      
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </footer>
+      

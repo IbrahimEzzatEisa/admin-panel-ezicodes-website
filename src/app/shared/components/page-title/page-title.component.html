@@ -1,0 +1,7 @@
+<p class="page-title text-title">
+  <span class="title-parent h5 text-title">{{_super}}</span>
+  <span *ngIf="_section" class="title-arrow"> <i style="font-size: 30px;" class="fa fa-chevron-right text-title " ></i>  </span>
+  <span *ngIf="_section" class="title-parent clickable underlined-text h5 text-title" (click)="navToSection()">{{_section}}</span>
+  <span class="title-arrow">  <i style="font-size: 30px;" class="fa fa-chevron-right  text-title "></i> </span>
+  <span class="title-current-page darker-theme-color h5 text-title">{{_pageTitle || _title}}</span>
+</p>

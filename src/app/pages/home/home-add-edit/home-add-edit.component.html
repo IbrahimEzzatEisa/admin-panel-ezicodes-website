@@ -1,0 +1,134 @@
+<div class="main ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <div class="row">
+                <h3 class="card-title">
+                  <app-page-title
+    super="  EziCodes"
+    section="  Home"
+    [title]="isAdd?'Add New Slide':'Edit Slide'"
+  ></app-page-title>
+                  
+                </h3>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <form name="form"
+          #form="ngForm">
+          <div class="row">
+            <div class="form-group col-md-2 col-sm-3 ">
+              <label> Order
+              </label>
+              <input class="form-controll"
+                [(ngModel)]="slid.order"
+                #order=ngModel
+                type="number"
+                name="order"
+                required>
+            </div>
+
+            <div class="form-group col-md-9 col-sm-7 ">
+              <label> Title
+              </label>
+              <input class="form-controll"
+                [(ngModel)]="slid.title"
+                #title=ngModel
+                name="title"
+                required>
+            </div>
+
+    
+          </div>
+
+         
+
+          <div class="row">
+            <div class="form-group col-lg-12 col-sm-7 ">
+              <label> Title Arabic
+              </label>
+              <input class="form-controll2"
+                [(ngModel)]="slid.titleAr"
+                #titleAr=ngModel
+                name="titleAr"
+                required>
+            </div>
+          </div>
+    
+
+   
+          <div class="row"style=" border: 3px solid #00688f !important;" >
+            <label class="text-center"> description English</label>
+
+          <textarea name="description"cols="30" rows="9" class="form-control" placeholder="Write your notes or questions here..."
+          #description="ngModel"
+          class="form-control"
+          [(ngModel)]="slid.description"></textarea>
+        </div>
+
+
+
+          <div class="row"style=" border: 3px solid #00688f !important;" >
+            <label class="text-center"> description Arabic</label>
+
+          <textarea name="descriptionAr"cols="30" rows="9" class="form-control" placeholder="Write your notes or questions here..."
+          #descriptionAr="ngModel"
+          class="form-control"
+          [(ngModel)]="slid.descriptionAr"></textarea>
+        </div>
+          
+
+
+     
+        <div class="row" style="margin-bottom: 25%; margin-top: 5%;">
+          <div
+          class="col-md-3 col-sm-12 mx-auto"
+          style="position:relative;"
+      >
+          <div class="upload-container services-image" #SlideImg>
+              <input
+                  #image
+                  name="image"
+                  class=" "
+                  autocomplete="off"
+                  (change)="onFileChanged($event,'image')"
+                  type="file"
+                  accept="image/*"  >
+              <p><i class="fa fa-window-close" (click)="changebackground(SlideImg,'UserImageURL',true,'image')"></i></p>
+          </div>
+      </div>
+      </div>
+    
+
+        </form>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 mx-auto">
+            <button class="btn btn-primary btn-lg btn-block"
+              type="button"
+              (click)="save()">SAVE
+            </button>
+          </div>
+          <div class="col-md-6 col-sm-6 mx-auto">
+              <button type="button"
+                class="btn btn-danger btn-lg btn-block"
+                data-dismiss="modal"
+                (click)="cancel()"> Cancel </button>
+  
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>

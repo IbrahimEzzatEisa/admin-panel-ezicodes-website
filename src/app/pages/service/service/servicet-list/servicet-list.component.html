@@ -1,0 +1,349 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <div class="row">
+                <h3 class="card-title">Services
+                  <span> <i class="fa fa-chevron-right "></i>
+                  </span>
+                  <span>
+                    <i
+                    (click)="navigateToAdd()"
+                    class="fa fa-plus-square"
+                      > <a>Add New Services</a> </i
+                      >
+                  </span>
+                </h3>
+              </div>
+            </div>
+  
+            <table class="table table-striped">
+              <thead class="">
+                <tr class="bg-space">
+                  <th *ngFor="let title of configs"
+                    class="text-center"> {{title.label}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of sliders; let i=index">
+                  <td>{{prop.id}}</td>
+                  <td>{{prop.order}}</td>
+                  <td>{{prop.title}}</td>
+                  <td>{{prop.titleAr}}</td>
+                  <td><img style="width: 70px; height: 70px;"
+                      [src]='prop.image'> </td>
+                  <td>{{prop.choises}}
+                    <button class=""
+                      title="Edit "
+                      (click)="navigateToEdit(prop.id)"
+                      ><i class="fa  fa-edit fa-2x "></i></button>
+                    <button class=""
+                      title="delete "
+                      (click)="delete(i)"><i class="fa fa-trash fa-2x"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"
+      role="document">
+      <div class="modal-content">
+        <div class="modal-header card-header-danger">
+          <h3 class="modal-title"
+            id="exampleModalLabel">
+            <i class="fa fa-plus"></i> Add Slide
+          </h3>
+  
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            <form name="form"
+              #form="ngForm">
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Order
+                  </label>
+                  <input class="form-controll"
+                    [(ngModel)]="servicesData.order"
+                    #order=ngModel
+                    type="number"
+                    name="order"
+                    required>
+                </div>
+  
+        
+              </div>
+  
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Title
+                  </label>
+                  <input class="form-controll"
+                    [(ngModel)]="servicesData.title"
+                    #title=ngModel
+                    name="title"
+                    required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Title Ar
+                  </label>
+                  <input class="form-controll"
+                    [(ngModel)]="servicesData.titleAr"
+                    #titleAr=ngModel
+                    name="titleAr"
+                    required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Into
+                  </label>
+                  <input class="form-controll"
+                    name="intro"
+                    [(ngModel)]="servicesData.intro"
+                    required>
+                </div>
+  
+                
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> intro Ar
+                  </label>
+                  <input class="form-controll"
+                    name="introAr"
+                    [(ngModel)]="servicesData.introAr"
+                    required>
+                </div>
+  
+                
+              </div>
+              <div class="row"
+                style="   border: 3px solid #00688f !important; ">
+                <div class="container">
+                  <header class="header">
+                  </header>
+                  <angular-editor [(ngModel)]="servicesData.description"
+                    name="description"
+                    [config]="config"></angular-editor>
+                </div>
+              </div>
+
+              <div class="row"
+              style="   border: 3px solid #00688f !important; ">
+              <div class="container">
+                <header class="header">
+                </header>
+                <angular-editor [(ngModel)]="servicesData.descriptionAr"
+                  name="descriptionAr"
+                  [config]="config"></angular-editor>
+              </div>
+            </div>
+
+
+              <div class="row">
+                <div class="form-group file-area">
+                  <label style="text-align: center; cursor: pointer;"
+                    for="images"
+                    (change)="onFileChanged($event)"> <i class="fa fa-plus"></i> Add Images </label>
+                  <input type="file"
+                    name="image"
+                    id="images"
+                    required="required"
+                    class="btn btn-primary btn-lg "
+                    name="UserImageMarking"
+                    autocomplete="off"
+                    (change)="onFileChanged($event)"
+                    type="file"
+                    accept="image/*" />
+                  <div class="file-dummy">
+                    <div class="success">Great, your files are selected. Keep on.</div>
+                    <div class="default">Please select some files</div>
+                  </div>
+                </div>
+              </div>
+  
+            </form>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 mx-auto">
+              <button class="btn btn-primary btn-lg btn-block"
+                type="button"
+                (click)="save()">SAVE
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 mx-auto">
+              <button type="button"
+                class="btn bg-cancel btn-block "
+                data-dismiss="modal"
+                (click)="cancel()"> Cancel </button>
+  
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade"
+    id="basicExampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"
+      role="document">
+  
+  
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"
+            id="exampleModalLabel">
+            <i class="fa fa-edit fa-2x"></i> Edit Slide
+          </h5>
+  
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            <form name="form"
+              #form="ngForm">
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> <sup class="text-danger">*</sup> Order</label>
+                  <input #order=ngModel
+                    class="form-controll"
+                    name="order"
+                    autocomplete="off"
+                    [(ngModel)]="servicesData.order"
+                    [ngClass]="{'is-invalid': formSubmitted && order.invalid || (order.invalid && (order.dirty || order.touched))}"
+                    type="number">
+                  <div class="text-danger droid-font mt-1"
+                    *ngIf="order.invalid && formSubmitted">
+                    <p> This Field is Required</p>
+                  </div>
+  
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Title</label>
+                  <input #title=ngModel
+                    class="form-controll"
+                    name="title"
+                    autocomplete="off"
+                    [(ngModel)]="servicesData.title"
+                    type="text">
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="form-group col-md-12 col-sm-6 ">
+                  <label> Intro</label>
+  
+                  <input #intro=ngModel
+                    class="form-controll"
+                    name="intro"
+                    autocomplete="off"
+                    [(ngModel)]="servicesData.intro"
+                    type="text">
+                </div>
+              </div>
+              <div class="row"
+                style="   border: 3px solid #00688f !important;
+           ">
+                <div class="container">
+                  <header class="header">
+                  </header>
+                  <angular-editor [(ngModel)]="servicesData.description  "
+                    name="description"
+                    [config]="config"></angular-editor>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="form-group col-md-6 offset-md-3 col-sm-6 ">
+                  <img [src]="image"
+                    width="200"
+                    class="border-darken-2 "
+                    height="200"
+                    *ngIf="updateimg">
+                  <button *ngIf="ResetButton"
+                    class="btn btn-primary"
+                    (click)="restimg()"> Reset Images </button>
+  
+                  <button *ngIf="apearButton"
+                    class="btn btn-primary"
+                    (click)="OpenToImg()"> Update Images </button>
+  
+  
+                  <div class="row"
+                    *ngIf="toupdate">
+                    <div class="form-group file-area">
+                      <label style="text-align: center; cursor: pointer;"
+                        for="images"
+                        (change)="onFileChanged($event)"> <i class="fa fa-plus"></i> Add Images </label>
+                      <input name="image"
+                        id="images"
+                        required="required"
+                        autocomplete="off"
+                        (change)="onFileChanged($event)"
+                        type="file"
+                        accept="image/*" />
+                      <div class="file-dummy">
+                        <div class="success">Great, your files are selected. Keep on.</div>
+                        <div class="default">Please select some files</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 mx-auto">
+                    <button class="btn btn-primary btn-lg btn-block"
+                      type="button"
+                      (click)="saveupdate()">SAVE
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 mx-auto">
+                    <button type="button"
+                      class="btn bg-cancel btn-block "
+                      data-dismiss="modal"
+                      (click)="cancel()"> Cancel </button>
+  
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+      </div>
+    </div>

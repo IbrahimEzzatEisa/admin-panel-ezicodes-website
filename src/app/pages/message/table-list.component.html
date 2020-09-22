@@ -1,0 +1,46 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Contact Message</h4>
+                  </div>
+                  
+                  <table class="table table-striped">
+                    <thead class="">
+                      <tr class="bg-space">
+                        <th *ngFor="let title of configs" class="text-center"> {{title.label}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="let prop of message; let i = index"
+                              >
+                        <td>{{prop.firstName}}</td>
+                        <td>{{prop.lastName}}</td>
+                        <td>{{prop.email}}</td>
+                        <td>{{prop.description}}</td>
+                        <td>{{prop.choises}}
+     
+                          <button
+                            class="btn"
+                            title="Delete "
+                            (click)="delete(prop.id,prop.firstName , i)"
+                          ><i class="fa fa-trash fa-2x"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                
+                  </table>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+
+
+
+

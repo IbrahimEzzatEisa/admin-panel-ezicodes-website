@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <div class="row">
+                <h3 class="card-title">Why EZICodes
+                  <span> <i class="fa fa-chevron-right "></i>
+                  </span>
+                  <span>
+                    <i
+                    (click)="navigateToAdd()"
+                    class="fa fa-plus-square"
+                      > <a>Add New WhyEzi Slide</a> </i  >
+                  </span>
+                </h3>
+              </div>
+            </div>
+  
+            <table class="table table-striped">
+              <thead class="">
+                <tr class="bg-space">
+                  <th *ngFor="let title of configs"
+                    class="text-center"> {{title.label}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of whyitem; let i=index">
+                  <td>{{prop.id}}</td>
+                  <td>{{prop.order}}</td>
+                  <td>{{prop.title}}</td>
+                  <td>{{prop.titleAr}}</td>
+
+                  <td><img style="width: 70px; height: 70px;"
+                      [src]='prop.icon'> </td>
+                  <td>{{prop.choises}}
+                    <button class=""
+                      title="Edit "
+                      (click)="navigateToEdit(prop.id)"
+                   ><i class="fa  fa-edit fa-2x "></i></button>
+                    <button class=""
+                      title="delete "
+                      (click)="delete(i)"><i class="fa fa-trash fa-2x"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  

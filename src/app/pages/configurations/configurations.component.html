@@ -1,0 +1,223 @@
+
+  <!-- new Desgin -->
+  <div class="main">
+    <div class="container-fluid">
+
+      
+  
+          <div class="row justify-content-center">
+            <div class="col-md-3 text-center">
+              <div class="form-group">
+                <label> LOGO Image</label>
+                  
+                <img [src]="imageLogo" width="70px" height="70px">
+              </div>
+            </div> 
+            <div class="col-md-3 text-center">
+
+              <div class="form-group">
+                <label> About Image</label>
+                <img [src]="data" width="70px" height="70px">
+              </div>
+              </div>
+
+              <div class="col-md-3 text-center">
+
+                <div class="form-group">
+                  <label> Profile Image</label>
+                  <img [src]="profile" width="70px" height="70px">
+                </div>
+                </div>
+
+          
+          </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-danger">
+                    <div class="row">
+      
+                      <h3 class="card-title">Configuration 
+                        <span> <i class="fa fa-chevron-right "></i>
+                        </span>
+                        <span>
+                          <i style="color: white;"
+                         
+                              class="fa fa-edit"
+                              data-toggle="modal" 
+                              data-target="#exampleModal"
+                            > <a > Update Configuration</a> </i> 
+                          </span>
+                        </h3>
+
+                        
+                    </div>
+                  </div>
+
+
+
+                    <table class="table table-striped">
+                        <thead class="">
+                          <tr class="bg-space">
+                            <th *ngFor="let title of configs" class="text-center"> {{title.label}}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                           <tr
+                           *ngFor="let prop of logos; let i=index">
+                            <td>{{prop.id}}</td>
+                            <td>{{prop.name}}</td>
+                            <td>{{prop.value}}</td>
+                            <td>{{prop.valueAr}}</td>
+
+                            <td>{{prop.choises}}
+                                <button
+                                class=""
+                                title="Edit "
+                                (click)="fill(prop)"
+                                data-toggle="modal"
+                                data-target="#basicExampleModal"
+                              ><i class="fa  fa-edit fa-2x "></i></button>
+                              
+                            </td>
+                          </tr> 
+                        </tbody>      
+                    
+                      </table>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+  </div>
+  
+
+<div
+ class="modal fade"
+ id="basicExampleModal"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div
+   class="modal-dialog modal-dialog-centered"
+   role="document"
+ >
+
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5
+         class="modal-title"
+         id="exampleModalLabel" >
+         <i class="fa fa-edit fa-2x"></i> Edit Configurations
+       </h5>
+
+     </div>
+     <div class="modal-body">
+       <div class="modal-body">
+         <form name="form"
+         #form="ngForm"> 
+   
+          <div class="row text-center ">
+          <div class="form-group col-md-12 col-sm-12 ">
+            <label > Name</label>
+             <input
+               class="form-controll text-center"
+               name="name"
+               autocomplete="off"
+               [(ngModel)]="logo.name"
+               type="text" 
+              readonly
+               />
+           </div>
+         </div> 
+
+         
+         <div class="row " *ngIf="hideimg">
+          <div class="form-group col-md-12 col-sm-6 ">
+            <label class="text-center" > Value</label>
+             <input
+               class="form-controll text-center"
+               name="value"
+               autocomplete="off"
+               [(ngModel)]="logo.value"
+               type="text"        
+               >
+           </div>
+         </div> 
+
+                  
+         <div class="row " *ngIf="hideimg">
+          <div class="form-group col-md-12 col-sm-6 ">
+            <label class="text-center" > Value Arabic</label>
+             <input
+               class="form-controll text-center"
+               name="valueAr"
+               autocomplete="off"
+               [(ngModel)]="logo.valueAr"
+               type="text"        
+               >
+           </div>
+         </div> 
+
+
+         <div class="row" style="margin-bottom: 45%; margin-top: 5%;" *ngIf="!hideimg"> 
+          <div
+          class="col-md-3 col-sm-12 mx-auto"
+          style="position:relative;"
+      >
+          <div class="upload-container services-image" #SlideImg>
+              <input
+                  #value
+                  name="value"
+                  class=" "
+                  autocomplete="off"
+                  (change)="onFileChanged($event)"
+                  type="file"
+                  accept="image/*"  >
+              <p><i class="fa fa-window-close" (click)="changebackground(SlideImg,'UserImageURL',true,'value')"></i> </p>
+              <a class="txt ">Add New Images</a>
+          </div>
+      </div>
+      </div>
+    
+
+
+
+       <div>
+         <div class="row">
+          <div class="col-md-12 col-sm-12 mx-auto">
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              type="button"
+              (click)="saveupdate()"
+              >SAVE 
+            </button>
+          </div>
+         </div>
+    <div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto">
+    <button
+      type="button"
+      class="btn bg-cancel btn-block "
+      data-dismiss="modal" (click)="cancel()"
+    >  Cancel </button>
+
+  </div>
+</div>
+
+        
+       </div>
+       </form>
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+
+

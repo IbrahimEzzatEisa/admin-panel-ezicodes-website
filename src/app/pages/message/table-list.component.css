@@ -1,0 +1,37 @@
+.thead {
+    color: rgb(28, 106, 170);
+}
+.card .table tr:first-child td {
+    border-top: none;
+    text-align: center !important;
+}
+.table thead tr th {
+    font-size: 1.063rem;
+    color: white;
+    font-family: NoirStd !important;
+}
+.fa-close{
+    color: rgb(141, 8, 37);
+}
+button[_ngcontent-ibh-c91] {
+    /* padding: 8px 30px; */
+    /* background: rgba(255, 255, 255, 0.8); */
+    /* color: #053777; */
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    border: 0;
+    /* text-shadow: 0 1px 2px #fff; */
+    cursor: pointer;
+}
+td{
+    text-align: center;
+  }
+  .container-fluid{
+    margin-top: -13%;
+  }
+  thead{
+    background-color:  #00688f;
+    color:white;
+    font-family: NoirStd !important;
+  }
